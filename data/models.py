@@ -7,7 +7,7 @@ class Officer(models.Model):
     rank = models.CharField(max_length=20)
 
     def __str__(self):
-        return (self.first_name + ' ' + self.last_name)
+        return (self.first_name + ' ' + self.last_name + '(' + DSN + ')')
 
 class Complaint(models.Model):
     officer = models.ForeignKey(Officer, on_delete=models.CASCADE)

@@ -14,4 +14,10 @@ def index(request):
 
 def detail(request, officer_id):
     officer = get_object_or_404(Officer, pk=officer_id)
-    return render(request,'data/detail.html',{'officer':officer})
+    complaints = officer.complaint_set.all()
+    return render(request,'data/detail.html',{'officer':officer, 'complaints': complaints})
+
+def results(request):
+    searchterm = request.GET.get('searchterm','')
+    officer_list = Officer.objects.filter(last_name__startswith=searchterm)
+    return render(request,'data/results.html',{'officer_list': officer_list})

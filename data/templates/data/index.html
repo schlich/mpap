@@ -1,14 +1,8 @@
 Welcome to the Missouri Police Accountability project.<br>
-Search for an officer below
+Search for an officer below by last name:
 
-<p>
-{% if officer_list %}
-    <ul>
-    {% for officer in officer_list %}
-        <li>{{ officer }}<br></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    No officers
-{% endif %}
-</p>
+<form action="{% url 'data:results' %}" method="get">
+    <input type="text" name="searchterm">
+    <input type="submit" value="Search">
+</form>
+

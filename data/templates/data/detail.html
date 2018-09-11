@@ -1,1 +1,5 @@
 {{officer}}
+<br>
+{% for complaint in complaints %}
+    <li>{{complaint.complaint_text}}</li>
+{% endfor %}

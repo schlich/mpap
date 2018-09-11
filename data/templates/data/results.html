@@ -1,0 +1,12 @@
+<p>
+    Click on an officer name to view complaint history: <br>
+    {% if officer_list %}
+        <ul>
+        {% for officer in officer_list %}
+            <li><a href="{% url 'data:detail' officer.id %}">{{ officer }}</a></li><br>
+        {% endfor %}
+        </ul>
+    {% else %}
+        No officers found
+    {% endif %}
+</p>
