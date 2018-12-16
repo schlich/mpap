@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.serializers import serialize
 from django.http import HttpResponse
+from django.conf import settings
 
 
 from .models import Officer
@@ -12,6 +13,7 @@ def index(request):
     context = {
         'officer_list': officer_list,
         'complaints_list': complaints_list,
+        'api_key': settings.GOOGLE_API_KEY,
     }
     return render(request,'data/index.html',context)
 
