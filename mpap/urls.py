@@ -21,4 +21,5 @@ app_name = 'data'
 urlpatterns = [
     path('data/', include('data.urls')),
     path('admin/', admin.site.urls),
+    path('searchableselect/', include('searchableselect.urls')),
 ]

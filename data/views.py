@@ -1,4 +1,7 @@
 from django.shortcuts import render, get_object_or_404
+from django.core.serializers import serialize
+from django.http import HttpResponse
+
 
 from .models import Officer
 from .models import Complaint
@@ -12,12 +15,21 @@ def index(request):
     }
     return render(request,'data/index.html',context)
 
-def detail(request, officer_id):
-    officer = get_object_or_404(Officer, pk=officer_id)
+def detail(request, DSN):
+    officer = get_object_or_404(Officer, pk=DSN)
     complaints = officer.complaint_set.all()
     return render(request,'data/detail.html',{'officer':officer, 'complaints': complaints})
 
 def results(request):
-    searchterm = request.GET.get('searchterm','')
-    officer_list = Officer.objects.filter(last_name__startswith=searchterm)
-    return render(request,'data/results.html',{'officer_list': officer_list})
+    searchterm = requaest.GET.get('searchterm','')
+    officer_matches = Officer.objects.filter(last_name__istartswith=searchterm)
+    return render(request,'data/results.html',{'officer_list': officer_matches})
+
+def complaint(request, file_no):
+    complaint = get_object_or_404(Complaint, pk=file_no)
+    officer = complaint.officer
+    return render(request, 'data/complaint.html',{'officer':officer,'complaint':complaint})
+
+def complaint_locations(request):
+    response = serialize('geojson', Complaint.objects.all())
+    return HttpResponse(response)

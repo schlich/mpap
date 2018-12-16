@@ -1,5 +1,17 @@
-{{officer}}
-<br>
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'data/skeleton.css' %}">
+
+<div class="container">
+        <h1>Missouri Police Accountability Project<br></h1>
+
+<div>
+    <h4><a>{{officer}}</a></h4><p>SN: {{officer.DSN}}</p></div>
+<div></div>
+
+<div>Employee Misconduct Allegation History</div>
 {% for complaint in complaints %}
-    <li>{{complaint.complaint_text}}</li>
+    <li>{{complaint.date}} -- {{complaint.district}} District -- <a href="{% url 'data:complaint' complaint.file_no %}">{{complaint.complaint_nature}}</a></li>
 {% endfor %}
+
+</div>

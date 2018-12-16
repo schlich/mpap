@@ -1,0 +1,18 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'data/skeleton.css' %}">
+
+<div class="container">
+    <h1>Missouri Police Accountability Project<br></h1>
+
+
+<div><h5>Complaint File # {{complaint.file_no}}</h5></div>
+<div><a>Officer:</a> {{officer}}</div>
+
+<div><a>Date of Complaint:</a> {{complaint.date}}</div>
+<div><a>District of Complaint:</a> {{complaint.district}}</div>
+<div><a>Nature of Complaint:</a> {{complaint.complaint_nature}}</div>
+<br>
+<div class="four columns"><a>Complaint Full Text:</a> {{complaint.complaint_text}}</div>
+
+</div>
